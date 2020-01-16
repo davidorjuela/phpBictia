@@ -17,17 +17,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-    <form action="insertar.php" method="GET">
+<body style="font-size:1.5em;">
+    <h1>Mis videojuegos</h1>
+    <form action="insertar.php" method="GET" style="margin:50px;">
         <input type="text" name="videojuego" id="">
         <button type="submit">Agregar</button>    
     </form>
+    <table style="border:1px solid black;border-spacing:10px;">
     <?php foreach($videojuegos as $videojuego): ?>
-        <div>
-            <?php echo $videojuego[1]; ?>
-            <a href="eliminar.php?id=<?php echo $videojuego[0]; ?>">x</a>
-            <a href="editar.php?id=<?php echo $videojuego[0]; ?>">Edit</a>
-        </div>
+        <tr>
+            <td  style="border:1px solid black;pading:5px;"><?php echo $videojuego[1]; ?></td>
+            <td><a href="eliminar.php?id=<?php echo $videojuego[0]; ?>">X</a></td>
+            <td><a href="editar.php?id=<?php echo $videojuego[0]; ?>">Edit</a></td>
+        </tr>
     <?php endforeach; ?>
+    </table>
 </body>
 </html>

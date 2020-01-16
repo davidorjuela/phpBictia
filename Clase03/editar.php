@@ -3,14 +3,11 @@
 
     //Seleccionamos todos los datos de la tabla videojuegos
     $id=$_GET['id'];
-    echo $id;
-    $sql = "SELECT * FROM videojuegos WHEN id='$id'";
+    $sql = "SELECT * FROM videojuegos WHERE id='$id'";
     //Crear una varialbe que guarde los datos de la consulta
     $resultado =mysqli_query($conexion,$sql);
-    echo $resultado;
     //Crear variable que se encargara de manipular y contener el resultado
     $videojuego = mysqli_fetch_all($resultado);
-    echo $resultado;
 ?> 
 
 <!DOCTYPE html>
@@ -22,10 +19,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Editar<?php echo $videojuego; ?></h1>
-    <form action="editar.php" method="GET">
-        <input type="text" name="videojuego" value="<?php echo $videojuego; ?>">
-        <button type="submit">Editar</button>    
+    <h1>Editar "<?php echo $videojuego[0][1]; ?>"</h1>
+    <form action="modificar.php" method="GET">
+        <input type="text" name="videojuego[id]" value="<?php echo $videojuego[0][0]; ?>" style="display:none">
+        <input type="text" name="videojuego[nombre]" value="<?php echo $videojuego[0][1]; ?>">
+        <button type="submit">Guardar</button>    
     </form>
 </body>
 </html>
